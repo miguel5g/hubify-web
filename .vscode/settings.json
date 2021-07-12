@@ -1,0 +1,8 @@
+{
+  "cSpell.words": ["hubify"],
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/.next": true
+  }
+}
