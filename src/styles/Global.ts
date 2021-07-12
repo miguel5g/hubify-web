@@ -15,6 +15,11 @@ export const GlobalStyles = createGlobalStyle`
     ${({ theme }) => theme.typography.bodyLight};
   }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   :root {
     font-size: 75%;
   }
