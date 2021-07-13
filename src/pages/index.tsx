@@ -4,15 +4,26 @@ import Image from 'next/image';
 import shareSVG from '../assets/svg/share.svg';
 
 import { Header } from '../components/Header';
+import { Button } from '../components/Button';
+import { ProjectCard } from '../components/ProjetcCard';
 
 import {
   BannerSection,
+  HighlightSection,
   HomeContainer,
   MainContainer,
 } from '../styles/pages/Home';
-import { Button } from '../components/Button';
 
 const Home: React.FC = () => {
+  const projectSample = {
+    id: 'sample',
+    title: 'Social Network',
+    description: 'Um simples projeto para desenvolver abilidaes',
+    stars: 113,
+    comments: 9,
+    impulses: 38,
+  };
+
   return (
     <HomeContainer>
       <MainContainer>
@@ -41,6 +52,16 @@ const Home: React.FC = () => {
             priority
           />
         </BannerSection>
+
+        <HighlightSection>
+          <h2>Projetos em destaque</h2>
+
+          <div>
+            <ProjectCard project={projectSample} />
+            <ProjectCard project={projectSample} />
+            <ProjectCard project={projectSample} />
+          </div>
+        </HighlightSection>
       </MainContainer>
     </HomeContainer>
   );

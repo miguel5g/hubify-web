@@ -72,3 +72,26 @@ export const BannerSection = styled(Section)`
     }
   }
 `;
+
+export const HighlightSection = styled(Section)`
+  align-items: center;
+
+  h2 {
+    margin-bottom: 16px;
+    ${({ theme }) => theme.typography.headlineHeavy};
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 100%;
+  }
+
+  @media (min-width: 840px) {
+    & > div {
+      flex-direction: row;
+    }
+  }
+`;
