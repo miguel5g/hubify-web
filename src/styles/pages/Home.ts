@@ -98,6 +98,52 @@ export const HighlightSection = styled(Section)`
   }
 `;
 
+export const DecideSection = styled(Section)`
+  flex-direction: column-reverse;
+  align-items: center;
+
+  text-align: center;
+
+  div:first-child {
+    width: 100%;
+    max-width: 436px;
+  }
+
+  div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 32px;
+
+    strong {
+      margin-bottom: 16px;
+
+      ${({ theme }) => theme.typography.headlineHeavy};
+    }
+
+    p {
+      color: ${({ theme }) => theme.colors.primary600};
+      ${({ theme }) => theme.typography.bodyLight};
+    }
+  }
+
+  @media (min-width: 840px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+
+    > div:last-child {
+      align-items: flex-end;
+
+      text-align: end;
+    }
+
+    > div {
+      flex: 1;
+    }
+  }
+`;
+
 export const FeedbackSection = styled(Section)`
   align-items: center;
 

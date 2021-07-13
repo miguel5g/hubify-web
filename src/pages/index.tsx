@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import shareSVG from '../assets/svg/share.svg';
+import decideSVG from '../assets/svg/decide.svg';
 
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
@@ -11,6 +12,7 @@ import { Feedback } from '../components/Feedback';
 
 import {
   BannerSection,
+  DecideSection,
   FeedbackSection,
   HighlightSection,
   HomeContainer,
@@ -73,6 +75,22 @@ const Home: React.FC = () => {
             <ProjectCard project={projectSample} />
           </div>
         </HighlightSection>
+
+        <DecideSection>
+          <div>
+            <Image src={decideSVG} alt="Decide" layout="responsive" />
+          </div>
+
+          <div>
+            <strong>Porque usar o Hubify?</strong>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga,
+              quisquam, dicta ipsum sunt provident voluptates dolorem a dolores
+              vitae quidem corporis sequi praesentium error dolore magnam ut
+              beatae? Commodi, doloremque.
+            </p>
+          </div>
+        </DecideSection>
 
         <FeedbackSection>
           <h2>Feedbacks</h2>
