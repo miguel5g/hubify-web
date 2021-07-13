@@ -6,7 +6,6 @@ import { FiMenu, FiX } from 'react-icons/fi';
 
 import vercelSVG from '../assets/svg/vercel.svg';
 
-import { Button } from './Button';
 import { LinkButton } from './LinkButton';
 
 import {
