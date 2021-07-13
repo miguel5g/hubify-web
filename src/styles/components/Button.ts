@@ -14,6 +14,7 @@ const PrimaryButton = css`
 export const ButtonContainer = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   padding: 0.5rem 1.85rem;
 

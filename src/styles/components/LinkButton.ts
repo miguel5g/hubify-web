@@ -14,6 +14,7 @@ const PrimaryLinkButton = css`
 export const LinkButtonContainer = styled.a<LinkButtonProps>`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   padding: 0.5rem 1.85rem;
 
