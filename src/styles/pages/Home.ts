@@ -19,10 +19,12 @@ const Section = styled.section`
 
   max-width: 1000px;
   margin: 0 auto;
-  padding: 48px 32px;
+  padding: 0 32px 64px;
 `;
 
 export const BannerSection = styled(Section)`
+  padding-top: 64px;
+
   & > div {
     display: flex;
     flex-direction: column;
