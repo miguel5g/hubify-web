@@ -6,6 +6,7 @@ import shareSVG from '../assets/svg/share.svg';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 import { ProjectCard } from '../components/ProjetcCard';
+import { Footer } from '../components/Footer';
 
 import {
   BannerSection,
@@ -63,6 +64,8 @@ const Home: React.FC = () => {
           </div>
         </HighlightSection>
       </MainContainer>
+
+      <Footer />
     </HomeContainer>
   );
 };
