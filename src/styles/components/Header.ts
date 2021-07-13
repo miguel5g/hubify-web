@@ -93,3 +93,21 @@ export const MobileActions = styled.div`
     display: none;
   }
 `;
+
+export const AuthActions = styled.div`
+  display: none;
+  gap: 8px;
+
+  margin-top: 16px;
+
+  &.opened {
+    display: flex;
+  }
+
+  @media (min-width: 840px) {
+    display: flex;
+
+    margin-top: 0;
+    margin-left: auto;
+  }
+`;

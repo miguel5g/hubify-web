@@ -6,7 +6,11 @@ import { FiMenu, FiX } from 'react-icons/fi';
 
 import vercelSVG from '../assets/svg/vercel.svg';
 
+import { Button } from './Button';
+import { LinkButton } from './LinkButton';
+
 import {
+  AuthActions,
   HeaderContainer,
   HeaderWrapper,
   MobileActions,
@@ -48,6 +52,15 @@ export const Header: React.FC = () => {
             <NavLink href="/sponsor">Apoiar</NavLink>
           </Link>
         </nav>
+
+        <AuthActions className={isOpen ? 'opened' : ''}>
+          <Link href="/signup" passHref>
+            <LinkButton>Registrar</LinkButton>
+          </Link>
+          <Link href="/signin" passHref>
+            <LinkButton isPrimary>Entrar</LinkButton>
+          </Link>
+        </AuthActions>
 
         <MobileActions className={isOpen ? 'opened' : ''}>
           <button onClick={() => setIsOpen(true)}>
