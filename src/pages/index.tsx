@@ -7,9 +7,11 @@ import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 import { ProjectCard } from '../components/ProjetcCard';
 import { Footer } from '../components/Footer';
+import { Feedback } from '../components/Feedback';
 
 import {
   BannerSection,
+  FeedbackSection,
   HighlightSection,
   HomeContainer,
   MainContainer,
@@ -23,6 +25,14 @@ const Home: React.FC = () => {
     stars: 113,
     comments: 9,
     impulses: 38,
+  };
+
+  const feedbackSample = {
+    id: 'sample',
+    title: 'Titulo do feedback',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi facere eius maxime aspernatur dolor numquam, adipisci debitis assumenda omnis praesentium nesciunt sequi, quo obcaecati nisi dolores reprehenderit neque expedita. Omnis!',
+    author: 'Miguel Ângelo',
   };
 
   return (
@@ -63,6 +73,16 @@ const Home: React.FC = () => {
             <ProjectCard project={projectSample} />
           </div>
         </HighlightSection>
+
+        <FeedbackSection>
+          <h2>Feedbacks</h2>
+
+          <div>
+            <Feedback feedback={feedbackSample} />
+            <Feedback feedback={feedbackSample} />
+            <Feedback feedback={feedbackSample} />
+          </div>
+        </FeedbackSection>
       </MainContainer>
 
       <Footer />
