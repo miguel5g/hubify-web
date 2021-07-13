@@ -20,6 +20,10 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  button {
+    cursor: pointer;
+  }
+
   :root {
     font-size: 75%;
   }
