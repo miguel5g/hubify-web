@@ -17,7 +17,7 @@ import {
 } from '../styles/components/Header';
 
 export const Header: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   function onResize() {
     console.log('Test');
