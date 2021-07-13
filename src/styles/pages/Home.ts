@@ -11,3 +11,64 @@ export const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
 `;
+
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 32px;
+`;
+
+export const BannerSection = styled(Section)`
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    h1 {
+      color: ${({ theme }) => theme.colors.primary900};
+      ${({ theme }) => theme.typography.displayHeavy};
+    }
+
+    span {
+      margin-top: 16px;
+
+      color: ${({ theme }) => theme.colors.primary600};
+      ${({ theme }) => theme.typography.bodyLight};
+    }
+
+    div {
+      display: flex;
+      gap: 16px;
+
+      margin: 32px 0;
+    }
+  }
+
+  img {
+    width: 64%;
+  }
+
+  @media (min-width: 840px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+
+    & > div {
+      align-items: flex-start;
+
+      max-width: calc(50% - 32px);
+
+      text-align: start;
+
+      div {
+        margin-bottom: 0;
+      }
+    }
+  }
+`;
