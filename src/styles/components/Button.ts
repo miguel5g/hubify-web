@@ -19,10 +19,10 @@ export const ButtonContainer = styled.button<ButtonProps>`
   padding: 0.5rem 1.85rem;
 
   background: none;
-  border: 1px solid ${({ theme }) => theme.colors.primary500};
+  border: 1px solid ${({ theme }) => theme.colors.primary400};
   border-radius: 4px;
 
-  color: ${({ theme }) => theme.colors.primary500};
+  color: ${({ theme }) => theme.colors.primary800};
   ${({ theme }) => theme.typography.bodyHeavy}
 
   ${({ isPrimary }) => (isPrimary ? PrimaryButton : null)};
