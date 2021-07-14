@@ -4,7 +4,7 @@ import { Button } from '../components/Button';
 
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { ProjectCard } from '../components/ProjetcCard';
+import { ProjectCard } from '../components/ProjectCard';
 
 import {
   MainContainer,

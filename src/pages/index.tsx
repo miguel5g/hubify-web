@@ -6,7 +6,7 @@ import decideSVG from '../assets/svg/decide.svg';
 
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
-import { ProjectCard } from '../components/ProjetcCard';
+import { ProjectCard } from '../components/ProjectCard';
 import { Footer } from '../components/Footer';
 import { Feedback } from '../components/Feedback';
 
