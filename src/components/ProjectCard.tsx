@@ -11,7 +11,7 @@ interface ProjectProps {
     title: string;
     description: string;
     stars: number;
-    comments: number;
+    feedbacks: number;
     impulses: number;
   };
 }
@@ -29,7 +29,7 @@ export const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         </span>
         <span>
           <FiMessageSquare />
-          {project.comments}
+          {project.feedbacks}
         </span>
         <span>
           <FiZap />
