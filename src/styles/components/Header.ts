@@ -12,6 +12,8 @@ export const HeaderContainer = styled.header`
 
   background: ${({ theme }) => theme.colors.primary100};
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary300};
+
+  z-index: 50;
 `;
 
 export const HeaderWrapper = styled.div`
