@@ -12,46 +12,55 @@ import {
 } from 'react-icons/fi';
 
 import { ProjectDetailsAsideContainer } from '../styles/components/ProjectDetailsAside';
-import { Button } from './Button';
 
-export const ProjectDetailsAside: React.FC = () => {
+interface ProjectDetailsAsideProps {
+  project: {
+    id: string;
+    title: string;
+    description: string;
+    author: string;
+    categories: string[];
+    stars: number;
+    feedbacks: number;
+    impulses: number;
+  };
+}
+
+export const ProjectDetailsAside: React.FC<ProjectDetailsAsideProps> = ({
+  project,
+}) => {
   return (
     <ProjectDetailsAsideContainer>
       <div>
         <div>
           <span>Título</span>
-          <strong>Z</strong>
+          <strong>{project.title}</strong>
         </div>
         <div>
           <span>Descrição</span>
-          <strong>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            dolore laboriosam illo maiores dignissimos ducimus? Nesciunt ipsam,
-            impedit enim modi ullam consequuntur aliquid commodi quis illo error
-            a amet molestiae!
-          </strong>
+          <strong>{project.description}</strong>
         </div>
         <div>
           <span>Autor</span>
-          <strong>Miguel Ângelo</strong>
+          <strong>{project.author}</strong>
         </div>
         <div>
           <span>Categorias</span>
-          <strong>Z</strong>
+          <strong>{project.categories.join(', ')}</strong>
         </div>
 
         <div className="stats">
           <span>
             <FiStar />
-            {113}
+            {project.stars}
           </span>
           <span>
             <FiMessageSquare />
-            {38}
+            {project.feedbacks}
           </span>
           <span>
             <FiZap />
-            {9}
+            {project.impulses}
           </span>
         </div>
       </div>
