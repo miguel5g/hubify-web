@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { Header } from '../../../components/Header';
@@ -50,6 +51,10 @@ const ProjctDetails: React.FC = () => {
 
   return (
     <ProjectDetailsContainer>
+      <Head>
+        <title>{projectSample.title}</title>
+      </Head>
+
       <MainContainer>
         <Header />
 

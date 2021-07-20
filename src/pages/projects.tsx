@@ -1,7 +1,8 @@
 import React from 'react';
+import Head from 'next/head';
 import { FiSearch } from 'react-icons/fi';
-import { Button } from '../components/Button';
 
+import { Button } from '../components/Button';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { ProjectCard } from '../components/ProjectCard';
@@ -25,6 +26,10 @@ const Projects: React.FC = () => {
 
   return (
     <ProjectsContainer>
+      <Head>
+        <title>Hubify - Eplorar projetos</title>
+      </Head>
+
       <MainContainer>
         <Header />
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Head from 'next/head';
 
 import shareSVG from '../assets/svg/share.svg';
 import decideSVG from '../assets/svg/decide.svg';
@@ -39,6 +40,10 @@ const Home: React.FC = () => {
 
   return (
     <HomeContainer>
+      <Head>
+        <title>Hubify - Uma vitrine de ideias e projetos</title>
+      </Head>
+
       <MainContainer>
         <Header />
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 
 import notFoundSVG from '../assets/svg/not-found.svg';
 
@@ -11,6 +12,10 @@ import { NotFoundContainer } from '../styles/pages/NotFound';
 const NotFound: React.FC = () => {
   return (
     <NotFoundContainer>
+      <Head>
+        <title>Hubify - Página não encontrada</title>
+      </Head>
+
       <div>
         <Image src={notFoundSVG} alt="Page not found" layout="responsive" />
       </div>

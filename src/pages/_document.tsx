@@ -39,6 +39,37 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
+
+          <meta
+            name="title"
+            content="Hubify - Explore projetos e ideias da comunidade"
+          />
+          <meta
+            name="description"
+            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
+          />
+
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://hubify.vercel.app/" />
+          <meta
+            property="og:title"
+            content="Hubify - Explore projetos e ideias da comunidade"
+          />
+          <meta
+            property="og:description"
+            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
+          />
+
+          <meta property="twitter:card" content="summary" />
+          <meta property="twitter:url" content="https://hubify.vercel.app/" />
+          <meta
+            property="twitter:title"
+            content="Hubify - Explore projetos e ideias da comunidade"
+          />
+          <meta
+            property="twitter:description"
+            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos usários"
+          />
         </Head>
 
         <body>
