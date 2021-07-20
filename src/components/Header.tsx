@@ -20,7 +20,6 @@ export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   function onResize() {
-    console.log('Test');
     if (window) {
       if (window.innerWidth > 840 && isOpen) setIsOpen(false);
     }
