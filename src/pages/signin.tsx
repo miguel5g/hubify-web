@@ -1,13 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
-import { FiLock, FiMail, FiUser } from 'react-icons/fi';
+import { FiLock, FiMail } from 'react-icons/fi';
 
 import { Anchor } from '../components/Anchor';
 import { Button } from '../components/Button';
 
 import { AuthContainer } from '../styles/pages/Auth';
 
-const SignUp: React.FC = () => {
+const SignIn: React.FC = () => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
@@ -15,19 +15,11 @@ const SignUp: React.FC = () => {
   return (
     <AuthContainer>
       <Head>
-        <title>Hubify - Criar conta</title>
+        <title>Hubify - Acessar conta</title>
       </Head>
 
       <form onSubmit={handleSubmit}>
-        <h1>Criar conta</h1>
-
-        <div>
-          <label htmlFor="username">
-            <FiUser />
-            Usuário
-          </label>
-          <input type="text" name="username" id="username" />
-        </div>
+        <h1>Acessar conta</h1>
 
         <div>
           <label htmlFor="email">
@@ -48,16 +40,16 @@ const SignUp: React.FC = () => {
         <div className="button-group">
           <Button>Voltar</Button>
           <Button isPrimary type="submit">
-            Registrar
+            Acessar
           </Button>
         </div>
 
         <span>
-          Já tem uma conta? <Anchor href="/signin">Clique aqui!</Anchor>
+          Não tem uma conta? <Anchor href="/signup">Clique aqui!</Anchor>
         </span>
       </form>
     </AuthContainer>
   );
 };
 
-export default SignUp;
+export default SignIn;
