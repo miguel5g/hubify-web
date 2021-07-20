@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Anchor } from '../../../components/Anchor';
-import { HomeContent } from './_lib/HomeContent';
-import { NotFoundContent } from './_lib/NotFoundContent';
+import { HomeContent } from '../../../components/HomeContent';
+import { NotFoundContent } from '../../../components/NotFoundContent';
 
 import {
   ContentSection,

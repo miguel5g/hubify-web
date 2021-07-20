@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { ProjectDetailsAside } from '../../../../components/ProjectDetailsAside';
+import { ProjectDetailsAside } from './ProjectDetailsAside';
 
-import { HomeContentContainer } from '../../../../styles/pages/ProjectDetails/HomeContent';
+import { HomeContentContainer } from '../styles/components/HomeContent';
 
 export const HomeContent: React.FC = () => {
   const projectSample = {

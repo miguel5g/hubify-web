@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 
-import notFoundSVG from '../../../../assets/svg/not-found.svg';
+import notFoundSVG from '../assets/svg/not-found.svg';
 
 import {
   ImageWrapper,
   NotFoundContentContainer,
-} from '../../../../styles/pages/ProjectDetails/NotFoundContent';
+} from '../styles/components/NotFoundContent';
 
 export const NotFoundContent: React.FC = () => {
   return (
