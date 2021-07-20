@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEvent } from 'react-use';
 import { FiMenu, FiX } from 'react-icons/fi';
 
-import vercelSVG from '../assets/svg/vercel.svg';
+import logoSVG from '../assets/svg/logo.svg';
 
 import { LinkButton } from './LinkButton';
 
@@ -31,8 +31,8 @@ export const Header: React.FC = () => {
     <HeaderContainer>
       <HeaderWrapper className={isOpen ? 'opened' : ''}>
         <Image
-          src={vercelSVG}
-          alt="Vercel"
+          src={logoSVG}
+          alt="Logo"
           width={154.77}
           height={35}
           layout="fixed"

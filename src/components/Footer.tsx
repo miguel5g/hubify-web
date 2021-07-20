@@ -10,10 +10,10 @@ export const Footer: React.FC = () => {
         <span>Feito com ❤ by Miguel Ângelo</span>
 
         <div>
-          <a href="#">
+          <a href="#" arial-label="Hubify Twitter">
             <FiTwitter />
           </a>
-          <a href="#">
+          <a href="#" arial-label="Hubify Github">
             <FiGithub />
           </a>
         </div>
