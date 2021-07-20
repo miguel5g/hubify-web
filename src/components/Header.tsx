@@ -61,7 +61,12 @@ export const Header: React.FC = () => {
         </AuthActions>
 
         <MobileActions className={isOpen ? 'opened' : ''}>
-          <button onClick={() => setIsOpen(true)}>
+          <button
+            onClick={() => {
+              if (window && window.scrollY === 0) window.scrollTo({ top: 1 });
+              setIsOpen(true);
+            }}
+          >
             <FiMenu />
           </button>
           <button onClick={() => setIsOpen(false)}>
