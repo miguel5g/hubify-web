@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
     title: 'Social Network',
     description: 'Um simples projeto para desenvolver abilidaes',
     stars: 113,
-    comments: 9,
+    feedbacks: 9,
     impulses: 38,
   };
 
