@@ -6,6 +6,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isPrimary?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
-  return <ButtonContainer {...props}>{children}</ButtonContainer>;
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  type = 'button',
+  ...props
+}) => {
+  return (
+    <ButtonContainer type={type} {...props}>
+      {children}
+    </ButtonContainer>
+  );
 };
