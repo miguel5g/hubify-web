@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { transparentize } from 'polished';
 
 export const HeaderContainer = styled.header`
   position: sticky;
@@ -10,8 +11,9 @@ export const HeaderContainer = styled.header`
 
   padding: 16px 32px;
 
-  background: ${({ theme }) => theme.colors.primary100};
+  background: ${({ theme }) => transparentize(0.12, theme.colors.primary100)};
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary300};
+  backdrop-filter: saturate(180%) blur(5px);
 
   z-index: 50;
 `;
