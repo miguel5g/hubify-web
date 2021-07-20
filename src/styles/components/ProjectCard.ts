@@ -7,8 +7,15 @@ export const ProjectCardContainer = styled.div`
 
   padding: 16px;
 
+  background: ${({ theme }) => theme.colors.primary100};
   border: 1px solid ${({ theme }) => theme.colors.primary300};
   border-radius: 8px;
+
+  transition: box-shadow 0.15s;
+
+  &:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+  }
 
   strong {
     margin-bottom: 8px;
