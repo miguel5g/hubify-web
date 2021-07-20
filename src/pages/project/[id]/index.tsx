@@ -5,6 +5,7 @@ import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Anchor } from '../../../components/Anchor';
 import { HomeContent } from './_lib/HomeContent';
+import { NotFoundContent } from './_lib/NotFoundContent';
 
 import {
   ContentSection,
@@ -99,7 +100,15 @@ const ProjctDetails: React.FC = () => {
         </HeaderSection>
 
         <ContentSection>
-          <HomeContent />
+          {(() => {
+            switch (tab) {
+              case 'home':
+                return <HomeContent />;
+
+              default:
+                return <NotFoundContent />;
+            }
+          })()}
         </ContentSection>
       </MainContainer>
 

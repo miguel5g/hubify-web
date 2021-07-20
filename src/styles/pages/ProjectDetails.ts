@@ -117,6 +117,8 @@ export const HeaderSection = styled(Section)`
 `;
 
 export const ContentSection = styled(Section)`
+  flex: 1;
+
   width: 100%;
   padding: 32px;
 `;
