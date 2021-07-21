@@ -59,6 +59,7 @@ export const HeaderSection = styled(Section)`
       padding: 0 32px;
 
       overflow-x: scroll;
+      scrollbar-width: 0;
 
       &::-webkit-scrollbar {
         display: none;
