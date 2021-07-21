@@ -4,6 +4,8 @@ import { FiMessageSquare, FiStar, FiZap } from 'react-icons/fi';
 import { Button } from './Button';
 
 import { ProjectCardContainer } from '../styles/components/ProjectCard';
+import Link from 'next/link';
+import { LinkButton } from './LinkButton';
 
 interface ProjectProps {
   project: {
@@ -37,7 +39,9 @@ export const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         </span>
       </div>
 
-      <Button>Visualizar</Button>
+      <Link href={`/project/${project.id}`} passHref>
+        <LinkButton>Visualizar</LinkButton>
+      </Link>
     </ProjectCardContainer>
   );
 };

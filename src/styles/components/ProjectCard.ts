@@ -50,7 +50,7 @@ export const ProjectCardContainer = styled.div`
     }
   }
 
-  button {
+  a {
     width: 100%;
   }
 `;
