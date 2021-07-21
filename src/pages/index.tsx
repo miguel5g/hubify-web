@@ -1,10 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link';
+import { toast } from 'react-hot-toast';
 
 import shareSVG from '../assets/svg/share.svg';
 import decideSVG from '../assets/svg/decide.svg';
 
+import { LinkButton } from '../components/LinkButton';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 import { ProjectCard } from '../components/ProjectCard';
@@ -53,8 +56,19 @@ const Home: React.FC = () => {
             <span>Apresente e avalie as suas ideias/projetos.</span>
 
             <div>
-              <Button isPrimary>Compartilhar</Button>
-              <Button>Explorar</Button>
+              <Button
+                onClick={() => {
+                  toast('Infelizmente isso ainda não funciona...', {
+                    icon: '🙁',
+                  });
+                }}
+                isPrimary
+              >
+                Compartilhar
+              </Button>
+              <Link href="/projects" passHref>
+                <LinkButton>Explorar</LinkButton>
+              </Link>
             </div>
           </div>
 
