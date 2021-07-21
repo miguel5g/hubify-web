@@ -18,8 +18,15 @@ export const FeedbackContainer = styled.div`
     margin-bottom: 16px;
     ${({ theme }) => theme.typography.bodyLight};
   }
+  img {
+    border-radius: 50%;
+
+    object-fit: cover;
+  }
 
   span {
+    margin-top: 8px;
+
     ${({ theme }) => theme.typography.bodyLight};
     font-style: italic;
   }
