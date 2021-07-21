@@ -103,7 +103,7 @@ export const ProjectDetailsAsideContainer = styled.aside`
         justify-content: center;
 
         min-width: 128px;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         padding: 4px 8px;
 
         background: none;
@@ -124,14 +124,14 @@ export const ProjectDetailsAsideContainer = styled.aside`
       span {
         margin-bottom: 2px;
 
-        ${({ theme }) => theme.typography.captionLight};
+        ${({ theme }) => theme.typography.bodyLight};
       }
     }
   }
 
   @media (min-width: 840px) {
     position: sticky;
-    top: 75px;
+    top: 71px;
 
     max-width: 300px;
   }

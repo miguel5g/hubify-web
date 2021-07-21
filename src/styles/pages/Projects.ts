@@ -52,7 +52,7 @@ export const SearchSection = styled(Section)`
       background: none;
       border: none;
 
-      ${({ theme }) => theme.typography.titleLight};
+      ${({ theme }) => theme.typography.bodyLight};
 
       outline: none;
     }

@@ -15,7 +15,7 @@ const SignUp: React.FC = () => {
   return (
     <AuthContainer>
       <Head>
-        <title>Hubify - Criar conta</title>
+        <title>Criar conta - Hubify</title>
       </Head>
 
       <form onSubmit={handleSubmit}>

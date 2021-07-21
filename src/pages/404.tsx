@@ -13,7 +13,7 @@ const NotFound: React.FC = () => {
   return (
     <NotFoundContainer>
       <Head>
-        <title>Hubify - Página não encontrada</title>
+        <title>Página não encontrada - Hubify</title>
       </Head>
 
       <div>

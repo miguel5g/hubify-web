@@ -14,6 +14,9 @@ declare module 'styled-components' {
       primary700: string;
       primary800: string;
       primary900: string;
+
+      blueLight: string;
+      blueDark: string;
     };
 
     typography: {
@@ -31,12 +34,13 @@ declare module 'styled-components' {
 
       bodyHeavy: FlattenSimpleInterpolation;
       bodyLight: FlattenSimpleInterpolation;
+    };
 
-      captionHeavy: FlattenSimpleInterpolation;
-      captionLight: FlattenSimpleInterpolation;
-
-      smallHeavy: FlattenSimpleInterpolation;
-      smallLight: FlattenSimpleInterpolation;
+    elevations: {
+      elevation1: FlattenSimpleInterpolation;
+      elevation2: FlattenSimpleInterpolation;
+      elevation3: FlattenSimpleInterpolation;
+      elevation4: FlattenSimpleInterpolation;
     };
   }
 }

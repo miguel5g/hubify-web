@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
   return (
     <ProjectsContainer>
       <Head>
-        <title>Hubify - Eplorar projetos</title>
+        <title>Eplorar projetos - Hubify</title>
       </Head>
 
       <MainContainer>

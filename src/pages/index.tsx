@@ -41,7 +41,7 @@ const Home: React.FC = () => {
   return (
     <HomeContainer>
       <Head>
-        <title>Hubify - Uma vitrine de ideias e projetos</title>
+        <title>Uma vitrine de ideias e projetos - Hubify</title>
       </Head>
 
       <MainContainer>
@@ -49,13 +49,8 @@ const Home: React.FC = () => {
 
         <BannerSection>
           <div>
-            <h1>Lorem ipsum dolor sit amet.</h1>
-            <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-              corrupti error tenetur labore harum tempora necessitatibus! Dolor
-              expedita nobis nostrum vitae, vero perspiciatis, inventore
-              delectus, corporis libero natus quas et?
-            </span>
+            <h1>A melhor forma para exibir e avaliar suas ideias e projetos</h1>
+            <span>Apresente e avalie as suas ideias/projetos.</span>
 
             <div>
               <Button isPrimary>Compartilhar</Button>
@@ -89,10 +84,9 @@ const Home: React.FC = () => {
           <div>
             <strong>Porque usar o Hubify?</strong>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga,
-              quisquam, dicta ipsum sunt provident voluptates dolorem a dolores
-              vitae quidem corporis sequi praesentium error dolore magnam ut
-              beatae? Commodi, doloremque.
+              O segredo para desenvolver algo que realmente agrade as pessoas é
+              ouvir comentários e sugestões para poder evoluir, e é ai que nós
+              te ajudamos.
             </p>
           </div>
         </DecideSection>

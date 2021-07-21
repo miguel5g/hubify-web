@@ -18,11 +18,12 @@ export const AuthContainer = styled.div`
 
     background: ${({ theme }) => theme.colors.primary100};
     border-radius: 4px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+    ${({ theme }) => theme.elevations.elevation3};
 
     h1 {
       margin: 0 auto 24px;
 
+      color: ${({ theme }) => theme.colors.blueDark};
       ${({ theme }) => theme.typography.displayHeavy};
     }
 

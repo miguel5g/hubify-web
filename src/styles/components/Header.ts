@@ -9,9 +9,9 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: center;
 
-  padding: 16px 32px;
+  padding: 12px 32px;
 
-  background: ${({ theme }) => transparentize(0.12, theme.colors.primary100)};
+  background: ${({ theme }) => transparentize(0.18, theme.colors.primary100)};
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary300};
   backdrop-filter: saturate(180%) blur(5px);
 
@@ -33,12 +33,20 @@ export const HeaderWrapper = styled.div`
     gap: 8px;
 
     margin-top: 16px;
+
+    a {
+      padding: 4px 8px;
+    }
   }
 
   &.opened {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+
+    > div {
+      margin-top: 7.25px;
+    }
 
     nav {
       display: flex;
@@ -49,7 +57,7 @@ export const HeaderWrapper = styled.div`
     nav {
       display: flex;
       flex-direction: row;
-      gap: 16px;
+      gap: 4px;
 
       margin: 0;
       margin-left: 64px;

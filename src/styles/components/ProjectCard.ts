@@ -14,7 +14,7 @@ export const ProjectCardContainer = styled.div`
   transition: box-shadow 0.15s;
 
   &:hover {
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+    ${({ theme }) => theme.elevations.elevation3};
   }
 
   strong {

@@ -13,5 +13,8 @@ export default {
     primary700: '#444',
     primary800: '#333',
     primary900: '#111',
+
+    blueDark: '#2193B0',
+    blueLight: '#6DD5ED',
   },
 } as DefaultTheme;

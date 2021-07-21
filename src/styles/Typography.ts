@@ -70,34 +70,6 @@ const bodyLight = css`
   line-height: 1.25rem;
 `;
 
-const captionHeavy = css`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.75rem;
-  line-height: 1rem;
-`;
-
-const captionLight = css`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.75rem;
-  line-height: 1rem;
-`;
-
-const smallHeavy = css`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.625rem;
-  line-height: 0.875rem;
-`;
-
-const smallLight = css`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.625rem;
-  line-height: 0.875rem;
-`;
-
 export default {
   displayHeavy,
   displayLight,
@@ -113,10 +85,4 @@ export default {
 
   bodyHeavy,
   bodyLight,
-
-  captionHeavy,
-  captionLight,
-
-  smallHeavy,
-  smallLight,
 } as DefaultTheme['typography'];

@@ -23,7 +23,7 @@ const ProjctDetails: React.FC = () => {
   const projectSample = {
     id: 'sample',
     title: 'Social Network',
-    description: 'Um simples projeto para desenvolver abilidaes',
+    description: 'Um simples projeto para desenvolver habilidades',
     stars: 113,
     feedbacks: 9,
     impulses: 38,
@@ -52,7 +52,7 @@ const ProjctDetails: React.FC = () => {
   return (
     <ProjectDetailsContainer>
       <Head>
-        <title>{projectSample.title}</title>
+        <title>{projectSample.title} - Hubify</title>
       </Head>
 
       <MainContainer>

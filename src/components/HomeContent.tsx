@@ -9,8 +9,7 @@ export const HomeContent: React.FC = () => {
     id: '1',
     title: 'Social Network',
     author: 'Miguel Ângelo',
-    description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quae nihil, error fuga ipsa, cupiditate unde ad saepe corporis laboriosam neque, iure alias! Ex quaerat, at eos molestiae ullam inventore?',
+    description: 'Um simples prrojeto para desenvolver habilidades',
     categories: ['Social', 'Em desenvolvimento', 'open-source'],
     stars: 113,
     feedbacks: 9,

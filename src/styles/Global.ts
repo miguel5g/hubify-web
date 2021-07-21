@@ -25,18 +25,18 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   :root {
-    font-size: 75%;
+    font-size: 87.5%;
   }
 
   @media (min-width: 840px) {
     :root {
-      font-size: 87.5%;
+      font-size: 100%;
     }
   }
   
   @media (min-width: 1280px) {
     :root {
-      font-size: 100%;
+      font-size: 112.5%;
     }
   }
 `;

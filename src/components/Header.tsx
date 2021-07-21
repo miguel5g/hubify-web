@@ -33,8 +33,8 @@ export const Header: React.FC = () => {
         <Image
           src={logoSVG}
           alt="Logo"
-          width={154.77}
-          height={35}
+          width={150}
+          height={25}
           layout="fixed"
           priority
         />
