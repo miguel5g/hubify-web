@@ -131,7 +131,7 @@ export const ProjectDetailsAsideContainer = styled.aside`
 
   @media (min-width: 840px) {
     position: sticky;
-    top: 71px;
+    top: 79px;
 
     max-width: 300px;
   }

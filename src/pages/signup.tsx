@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { toast } from 'react-hot-toast';
 import { FiLock, FiMail, FiUser } from 'react-icons/fi';
 
 import { Anchor } from '../components/Anchor';
@@ -10,6 +11,9 @@ import { AuthContainer } from '../styles/pages/Auth';
 const SignUp: React.FC = () => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    toast('Infelizmente isso ainda não funciona...', {
+      icon: '🙁',
+    });
   }
 
   return (

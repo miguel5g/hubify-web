@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { toast } from 'react-hot-toast';
 import { FiSearch } from 'react-icons/fi';
 
 import { Button } from '../components/Button';
@@ -23,6 +24,12 @@ const Projects: React.FC = () => {
     feedbacks: 9,
     impulses: 38,
   };
+
+  function handleLoadMore() {
+    toast('Infelizmente isso ainda não funciona...', {
+      icon: '🙁',
+    });
+  }
 
   return (
     <ProjectsContainer>
@@ -51,7 +58,7 @@ const Projects: React.FC = () => {
             ))}
           </ul>
 
-          <Button>Carregar mais...</Button>
+          <Button onClick={handleLoadMore}>Carregar mais...</Button>
         </ResultSection>
       </MainContainer>
 

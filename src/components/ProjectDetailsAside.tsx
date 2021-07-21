@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import {
   FiAlertCircle,
   FiExternalLink,
@@ -29,6 +30,12 @@ interface ProjectDetailsAsideProps {
 export const ProjectDetailsAside: React.FC<ProjectDetailsAsideProps> = ({
   project,
 }) => {
+  function underBuilding() {
+    toast('Infelizmente isso ainda não funciona...', {
+      icon: '🙁',
+    });
+  }
+
   return (
     <ProjectDetailsAsideContainer>
       <div>
@@ -88,31 +95,31 @@ export const ProjectDetailsAside: React.FC<ProjectDetailsAsideProps> = ({
         <strong>Ações</strong>
 
         <span>Dar uma estrela para o projeto.</span>
-        <button>
+        <button onClick={underBuilding}>
           <FiStar />
           Estrela
         </button>
 
         <span>Impulsionar este projeto.</span>
-        <button>
+        <button onClick={underBuilding}>
           <FiZap />
           Impulso
         </button>
 
         <span>Deixe um feedback sobre o projeto.</span>
-        <button>
+        <button onClick={underBuilding}>
           <FiMessageSquare />
           Comentário
         </button>
 
         <span>Sugerir algo para ser implementado.</span>
-        <button>
+        <button onClick={underBuilding}>
           <FiSun />
           Sugestão
         </button>
 
         <span>Quer reportar um bug? Clique aqui.</span>
-        <button>
+        <button onClick={underBuilding}>
           <FiAlertCircle />
           Problemas
         </button>

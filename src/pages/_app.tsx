@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
+import { Toaster } from 'react-hot-toast';
 
 import { GlobalStyles } from '../styles/Global';
 import Light from '../styles/themes/Light';
@@ -14,6 +15,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     >
       <GlobalStyles />
       <Component {...pageProps} />
+      <Toaster />
     </ThemeProvider>
   );
 };
