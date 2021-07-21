@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import { FiLock, FiMail } from 'react-icons/fi';
 
@@ -9,6 +10,8 @@ import { Button } from '../components/Button';
 import { AuthContainer } from '../styles/pages/Auth';
 
 const SignIn: React.FC = () => {
+  const router = useRouter();
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     toast('Infelizmente isso ainda não funciona...', {
@@ -42,7 +45,7 @@ const SignIn: React.FC = () => {
         </div>
 
         <div className="button-group">
-          <Button>Voltar</Button>
+          <Button onClick={() => router.back()}>Voltar</Button>
           <Button isPrimary type="submit">
             Acessar
           </Button>
