@@ -7,6 +7,7 @@ import { Footer } from '../../../components/Footer';
 import { Anchor } from '../../../components/Anchor';
 import { HomeContent } from '../../../components/HomeContent';
 import { NotFoundContent } from '../../../components/NotFoundContent';
+import { FeedbacksContent } from '../../../components/FeedbacksContent';
 
 import {
   ContentSection,
@@ -70,12 +71,12 @@ const ProjctDetails: React.FC = () => {
               >
                 Apresentação
               </Anchor>
-              <Anchor
+              {/* <Anchor
                 className={tab === 'messages' ? 'active' : null}
                 href="/project/1/messages"
               >
                 Messagens
-              </Anchor>
+              </Anchor> */}
               <Anchor
                 className={tab === 'feedbacks' ? 'active' : null}
                 href="/project/1/feedbacks"
@@ -95,6 +96,12 @@ const ProjctDetails: React.FC = () => {
                 Problemas
               </Anchor>
               <Anchor
+                className={tab === 'suggestions' ? 'active' : null}
+                href="/project/1/suggestions"
+              >
+                Sugestões
+              </Anchor>
+              <Anchor
                 className={tab === 'settings' ? 'active' : null}
                 href="/project/1/settings"
               >
@@ -109,6 +116,9 @@ const ProjctDetails: React.FC = () => {
             switch (tab) {
               case 'home':
                 return <HomeContent />;
+
+              case 'feedbacks':
+                return <FeedbacksContent />;
 
               default:
                 return <NotFoundContent />;
