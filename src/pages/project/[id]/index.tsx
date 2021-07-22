@@ -35,10 +35,10 @@ const ProjctDetails: React.FC = () => {
     const { tab } = router.query;
     const validTabs = [
       'home',
-      'messages',
       'feedbacks',
       'changelog',
       'issues',
+      'suggestions',
       'settings',
       'not_found',
     ];
