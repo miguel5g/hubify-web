@@ -2,7 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 import { toast } from 'react-hot-toast';
+
+import { appFeedbackData, projectData } from '../utils/Samples';
 
 import shareSVG from '../assets/svg/share.svg';
 import decideSVG from '../assets/svg/decide.svg';
@@ -23,24 +26,14 @@ import {
   MainContainer,
 } from '../styles/pages/Home';
 
-const Home: React.FC = () => {
-  const projectSample = {
-    id: 'sample',
-    title: 'Social Network',
-    description: 'Um simples projeto para desenvolver abilidaes',
-    stars: 113,
-    feedbacks: 9,
-    impulses: 38,
+interface HomeProps {
+  highlights: {
+    projects: [ProjectData, ProjectData, ProjectData];
+    feedbacks: [AppFeedbackData, AppFeedbackData, AppFeedbackData];
   };
+}
 
-  const feedbackSample = {
-    id: 'sample',
-    title: 'Titulo do feedback',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi facere eius maxime aspernatur dolor numquam, adipisci debitis assumenda omnis praesentium nesciunt sequi, quo obcaecati nisi dolores reprehenderit neque expedita. Omnis!',
-    author: 'Miguel Ângelo',
-  };
-
+const Home: React.FC<HomeProps> = ({ highlights }) => {
   return (
     <HomeContainer>
       <Head>
@@ -84,9 +77,9 @@ const Home: React.FC = () => {
           <h2>Projetos em destaque</h2>
 
           <div>
-            <ProjectCard project={projectSample} />
-            <ProjectCard project={projectSample} />
-            <ProjectCard project={projectSample} />
+            <ProjectCard project={highlights.projects[0]} />
+            <ProjectCard project={highlights.projects[1]} />
+            <ProjectCard project={highlights.projects[2]} />
           </div>
         </HighlightSection>
 
@@ -109,9 +102,9 @@ const Home: React.FC = () => {
           <h2>Feedbacks</h2>
 
           <div>
-            <Feedback feedback={feedbackSample} />
-            <Feedback feedback={feedbackSample} />
-            <Feedback feedback={feedbackSample} />
+            <Feedback feedback={highlights.feedbacks[0]} />
+            <Feedback feedback={highlights.feedbacks[1]} />
+            <Feedback feedback={highlights.feedbacks[2]} />
           </div>
         </FeedbackSection>
       </MainContainer>
@@ -119,6 +112,17 @@ const Home: React.FC = () => {
       <Footer />
     </HomeContainer>
   );
+};
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  return {
+    props: {
+      highlights: {
+        projects: [projectData, projectData, projectData],
+        feedbacks: [appFeedbackData, appFeedbackData, appFeedbackData],
+      },
+    },
+  };
 };
 
 export default Home;
