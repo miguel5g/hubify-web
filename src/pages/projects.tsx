@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
 import { toast } from 'react-hot-toast';
+import { useList } from 'react-use';
 import { FiSearch } from 'react-icons/fi';
+
+import { projectData } from '../utils/Samples';
 
 import { Button } from '../components/Button';
 import { Footer } from '../components/Footer';
@@ -14,19 +18,16 @@ import {
   ResultSection,
   SearchSection,
 } from '../styles/pages/Projects';
-import { useEffect } from 'react';
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  projects: ProjectData[];
+}
+
+const Projects: React.FC<ProjectsProps> = (props) => {
   const [search, setSearch] = useState('');
+  const [projects, projectsMethods] = useList(props.projects);
+
   let searchTimeout: NodeJS.Timeout;
-  const projectSample = {
-    id: 'sample',
-    title: 'Social Network',
-    description: 'Um simples projeto para desenvolver abilidaes',
-    stars: 113,
-    feedbacks: 9,
-    impulses: 38,
-  };
 
   useEffect(() => {
     console.log(search);
@@ -70,9 +71,9 @@ const Projects: React.FC = () => {
 
         <ResultSection>
           <ul>
-            {Array.from({ length: 18 }).map((_, i) => (
-              <li key={i}>
-                <ProjectCard project={projectSample} />
+            {projects.map((data, i) => (
+              <li key={i.toString()}>
+                <ProjectCard project={data} />
               </li>
             ))}
           </ul>
@@ -84,6 +85,16 @@ const Projects: React.FC = () => {
       <Footer />
     </ProjectsContainer>
   );
+};
+
+export const getStaticProps: GetStaticProps<ProjectsProps> = async () => {
+  const projects = Array.from({ length: 18 }, () => projectData);
+
+  return {
+    props: {
+      projects,
+    },
+  };
 };
 
 export default Projects;
