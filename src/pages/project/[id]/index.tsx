@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
 import { projectData } from '../../../utils/Samples';
@@ -28,23 +28,11 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
 
   const router = useRouter();
 
-  /* Definir a tab que será exibida */
   useEffect(() => {
     const { tab } = router.query;
-    const validTabs = [
-      'home',
-      'feedbacks',
-      'changelog',
-      'issues',
-      'suggestions',
-      'settings',
-      'not_found',
-    ];
 
-    if (typeof tab === 'object') return setTab('not_found');
-
-    if (tab && validTabs.indexOf(tab) === -1) setTab('not_found');
-    else if (tab) setTab(tab);
+    if (['string', 'undefined'].indexOf(typeof tab) === -1) setTab('not_found');
+    else if (tab) setTab(tab.toString());
     else setTab('home');
   }, [router]);
 
@@ -65,37 +53,37 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
             <nav>
               <Anchor
                 className={tab === 'home' ? 'active' : null}
-                href="/project/1"
+                href={`/project/${project.id}`}
               >
                 Apresentação
               </Anchor>
               <Anchor
                 className={tab === 'feedbacks' ? 'active' : null}
-                href="/project/1/feedbacks"
+                href={`/project/${project.id}/feedbacks`}
               >
                 Comentáros
               </Anchor>
               <Anchor
                 className={tab === 'changelog' ? 'active' : null}
-                href="/project/1/changelog"
+                href={`/project/${project.id}/changelog`}
               >
                 Alterações
               </Anchor>
               <Anchor
                 className={tab === 'issues' ? 'active' : null}
-                href="/project/1/issues"
+                href={`/project/${project.id}/issues`}
               >
                 Problemas
               </Anchor>
               <Anchor
                 className={tab === 'suggestions' ? 'active' : null}
-                href="/project/1/suggestions"
+                href={`/project/${project.id}/suggestions`}
               >
                 Sugestões
               </Anchor>
               <Anchor
                 className={tab === 'settings' ? 'active' : null}
-                href="/project/1/settings"
+                href={`/project/${project.id}/settings`}
               >
                 Configurações
               </Anchor>
@@ -124,11 +112,37 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<ProjectDetailsProps> = async () => {
+export const getStaticProps: GetStaticProps<ProjectDetailsProps> = async (
+  context
+) => {
+  const validTabs = [
+    'home',
+    'feedbacks',
+    'changelog',
+    'issues',
+    'suggestions',
+    'settings',
+  ];
+
+  const { id, tab } = context.params;
+
+  if (validTabs.indexOf((tab || 'home').toString()) === -1) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       project: projectData,
     },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
   };
 };
 

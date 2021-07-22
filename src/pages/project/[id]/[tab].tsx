@@ -1,5 +1,5 @@
-import React from 'react';
+import ProjectDetails, { getStaticProps, getStaticPaths } from './index';
 
-import ProjectDetails from './index';
+export { getStaticProps, getStaticPaths };
 
 export default ProjectDetails;
