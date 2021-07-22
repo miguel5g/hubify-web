@@ -1,21 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 import { FiMessageSquare, FiStar, FiZap } from 'react-icons/fi';
 
-import { Button } from './Button';
-
-import { ProjectCardContainer } from '../styles/components/ProjectCard';
-import Link from 'next/link';
 import { LinkButton } from './LinkButton';
 
+import { ProjectCardContainer } from '../styles/components/ProjectCard';
+
 interface ProjectProps {
-  project: {
-    id: string;
-    title: string;
-    description: string;
-    stars: number;
-    feedbacks: number;
-    impulses: number;
-  };
+  project: ProjectData;
 }
 
 export const ProjectCard: React.FC<ProjectProps> = ({ project }) => {

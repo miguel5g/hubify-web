@@ -4,12 +4,7 @@ import Image from 'next/image';
 import { FeedbackContainer } from '../styles/components/Feedback';
 
 interface FeedbackProps {
-  feedback: {
-    id: string;
-    title: string;
-    content: string;
-    author: string;
-  };
+  feedback: AppFeedbackData;
 }
 
 export const Feedback: React.FC<FeedbackProps> = ({ feedback }) => {
