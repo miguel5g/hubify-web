@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+
+import { projectData } from '../../../utils/Samples';
 
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
@@ -16,19 +19,14 @@ import {
   ProjectDetailsContainer,
 } from '../../../styles/pages/ProjectDetails';
 
-const ProjctDetails: React.FC = () => {
+interface ProjectDetailsProps {
+  project: ProjectData;
+}
+
+const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
   const [tab, setTab] = useState<string>('home');
 
   const router = useRouter();
-
-  const projectSample = {
-    id: 'sample',
-    title: 'Social Network',
-    description: 'Um simples projeto para desenvolver habilidades',
-    stars: 113,
-    feedbacks: 9,
-    impulses: 38,
-  };
 
   /* Definir a tab que será exibida */
   useEffect(() => {
@@ -53,15 +51,15 @@ const ProjctDetails: React.FC = () => {
   return (
     <ProjectDetailsContainer>
       <Head>
-        <title>{projectSample.title} - Hubify</title>
+        <title>{project.title} - Hubify</title>
       </Head>
 
       <MainContainer>
         <Header />
 
         <HeaderSection>
-          <h1>{projectSample.title}</h1>
-          <p>{projectSample.description}</p>
+          <h1>{project.title}</h1>
+          <p>{project.description}</p>
 
           <div>
             <nav>
@@ -71,12 +69,6 @@ const ProjctDetails: React.FC = () => {
               >
                 Apresentação
               </Anchor>
-              {/* <Anchor
-                className={tab === 'messages' ? 'active' : null}
-                href="/project/1/messages"
-              >
-                Messagens
-              </Anchor> */}
               <Anchor
                 className={tab === 'feedbacks' ? 'active' : null}
                 href="/project/1/feedbacks"
@@ -132,4 +124,12 @@ const ProjctDetails: React.FC = () => {
   );
 };
 
-export default ProjctDetails;
+export const getStaticProps: GetStaticProps<ProjectDetailsProps> = async () => {
+  return {
+    props: {
+      project: projectData,
+    },
+  };
+};
+
+export default ProjectDetails;
