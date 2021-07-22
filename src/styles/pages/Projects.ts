@@ -49,6 +49,8 @@ export const SearchSection = styled(Section)`
     }
 
     input {
+      width: 256px;
+
       background: none;
       border: none;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { toast } from 'react-hot-toast';
 import { FiSearch } from 'react-icons/fi';
@@ -14,8 +14,11 @@ import {
   ResultSection,
   SearchSection,
 } from '../styles/pages/Projects';
+import { useEffect } from 'react';
 
 const Projects: React.FC = () => {
+  const [search, setSearch] = useState('');
+  let searchTimeout: NodeJS.Timeout;
   const projectSample = {
     id: 'sample',
     title: 'Social Network',
@@ -25,10 +28,22 @@ const Projects: React.FC = () => {
     impulses: 38,
   };
 
+  useEffect(() => {
+    console.log(search);
+  }, [search]);
+
   function handleLoadMore() {
     toast('Infelizmente isso ainda não funciona...', {
       icon: '🙁',
     });
+  }
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (searchTimeout) clearTimeout(searchTimeout);
+
+    searchTimeout = setTimeout(() => {
+      setSearch(e.target.value);
+    }, 1000);
   }
 
   return (
@@ -45,7 +60,11 @@ const Projects: React.FC = () => {
 
           <label>
             <FiSearch />
-            <input type="text" />
+            <input
+              type="text"
+              placeholder="Digite algo para pesquisar..."
+              onChange={handleInputChange}
+            />
           </label>
         </SearchSection>
 
