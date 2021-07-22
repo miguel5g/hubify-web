@@ -17,3 +17,13 @@ interface AppFeedbackData {
   title: string;
   content: string;
 }
+
+interface ChangelogData {
+  id: string;
+  author: string;
+  author_id: string;
+  image_url?: string;
+  title: string;
+  content: string;
+  created_at: string;
+}

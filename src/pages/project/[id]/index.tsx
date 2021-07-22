@@ -11,6 +11,7 @@ import { Anchor } from '../../../components/Anchor';
 import { HomeContent } from '../../../components/HomeContent';
 import { NotFoundContent } from '../../../components/NotFoundContent';
 import { FeedbacksContent } from '../../../components/FeedbacksContent';
+import { ChangelogContent } from '../../../components/ChangelogContent';
 
 import {
   ContentSection,
@@ -99,6 +100,9 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
 
               case 'feedbacks':
                 return <FeedbacksContent />;
+
+              case 'changelog':
+                return <ChangelogContent />;
 
               default:
                 return <NotFoundContent />;
