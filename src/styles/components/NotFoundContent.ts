@@ -7,6 +7,8 @@ export const NotFoundContentContainer = styled.div`
   justify-content: center;
   flex: 1;
 
+  text-align: center;
+
   strong {
     margin: 16px 0 4px;
 
