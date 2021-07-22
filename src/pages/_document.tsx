@@ -40,35 +40,47 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
+          {/* Primary Meta Tags */}
           <meta
             name="title"
-            content="Hubify - Explore projetos e ideias da comunidade"
+            content="A melhor forma para exibir e avaliar suas ideias e projetos"
           />
           <meta
             name="description"
             content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
           />
+          <meta name="theme-color" content="#6DD5ED" />
 
+          {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://hubify.vercel.app/" />
           <meta
             property="og:title"
-            content="Hubify - Explore projetos e ideias da comunidade"
+            content="A melhor forma para exibir e avaliar suas ideias e projetos"
           />
           <meta
             property="og:description"
             content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
           />
+          <meta
+            property="og:image"
+            content="https://hubify.vercel.app/hubify.jpg"
+          />
 
-          <meta property="twitter:card" content="summary" />
+          {/* Twitter */}
+          <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://hubify.vercel.app/" />
           <meta
             property="twitter:title"
-            content="Hubify - Explore projetos e ideias da comunidade"
+            content="A melhor forma para exibir e avaliar suas ideias e projetos"
           />
           <meta
             property="twitter:description"
-            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos usários"
+            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
+          />
+          <meta
+            property="twitter:image"
+            content="https://hubify.vercel.app/hubify.jpg"
           />
         </Head>
 
