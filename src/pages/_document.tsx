@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
+            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos usuários"
           />
           <meta name="theme-color" content="#6DD5ED" />
 
@@ -60,7 +60,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="og:description"
-            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
+            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos usuários"
           />
           <meta
             property="og:image"
@@ -76,7 +76,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="twitter:description"
-            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos uusários"
+            content="Um local para você expor suas ideias e projetos em andamento e acompanhar a interação dos usuários"
           />
           <meta
             property="twitter:image"
