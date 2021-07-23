@@ -10,21 +10,23 @@ export const HomeContentContainer = styled.div`
 
   width: 100%;
 
-  & > div {
-    height: 200vh;
-    /* background: ${({ theme }) => theme.colors.primary500}; */
-    background: linear-gradient(
-      180deg,
-      #c4c4c4 0%,
-      #ff0000 44.79%,
-      #00ff66 97.92%
-    );
+  & > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 
-    &.aside-wrapper {
-      position: relative;
-      height: 100%;
-      background: transparent;
-    }
+    height: max-content;
+    padding: 16px;
+
+    background: ${({ theme }) => theme.colors.primary100};
+    border-radius: 8px;
+    border: 1px solid ${({ theme }) => theme.colors.primary300};
+  }
+
+  div.aside-wrapper {
+    position: relative;
+    height: 100%;
+    background: transparent;
   }
 
   @media (min-width: 840px) {
