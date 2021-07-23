@@ -62,10 +62,12 @@ export const SearchSection = styled(Section)`
 `;
 
 export const ResultSection = styled(Section)`
+  padding: 0 16px 64px;
+
   ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 16px;
+    grid-gap: 8px;
 
     margin-bottom: 32px;
 
@@ -83,6 +85,7 @@ export const ResultSection = styled(Section)`
   @media (min-width: 840px) {
     ul {
       grid-template-columns: repeat(3, 1fr);
+      grid-gap: 16px;
     }
   }
 `;
