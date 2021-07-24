@@ -19,6 +19,14 @@ interface AppFeedbackData {
   content: string;
 }
 
+interface FeedbackData {
+  id: string;
+  author: string;
+  author_id: string;
+  image_url?: string;
+  content: string;
+}
+
 interface ChangelogData {
   id: string;
   author: string;
@@ -28,3 +36,8 @@ interface ChangelogData {
   content: string;
   created_at: string;
 }
+
+type ExtendedProjectData = ProjectData & {
+  comments: FeedbackData[];
+  changelogs: ChangelogData[];
+};
