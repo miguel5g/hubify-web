@@ -3,6 +3,8 @@ import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
 
+import { ProjectContextProvider } from '../contexts/ProjectContext';
+
 import { GlobalStyles } from '../styles/Global';
 import Light from '../styles/themes/Light';
 import Typography from '../styles/Typography';
@@ -13,9 +15,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     <ThemeProvider
       theme={{ ...Light, typography: Typography, elevations: Elevations }}
     >
-      <GlobalStyles />
-      <Component {...pageProps} />
-      <Toaster />
+      <ProjectContextProvider>
+        <GlobalStyles />
+        <Component {...pageProps} />
+        <Toaster />
+      </ProjectContextProvider>
     </ThemeProvider>
   );
 };
