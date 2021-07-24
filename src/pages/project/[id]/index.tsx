@@ -3,7 +3,12 @@ import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
-import { projectData } from '../../../utils/Samples';
+import {
+  projectData,
+  appFeedbackData,
+  changelogData,
+} from '../../../utils/Samples';
+import { useProject } from '../../../hooks/useProject';
 
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
@@ -21,13 +26,15 @@ import {
 } from '../../../styles/pages/ProjectDetails';
 
 interface ProjectDetailsProps {
-  project: ProjectData;
+  initalData: ExtendedProjectData;
 }
 
-const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
+const ProjectDetails: React.FC<ProjectDetailsProps> = ({ initalData }) => {
   const [tab, setTab] = useState<string>('home');
+  initalData.id;
 
   const router = useRouter();
+  const { project, setProject } = useProject();
 
   useEffect(() => {
     const { tab } = router.query;
@@ -36,6 +43,17 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
     else if (tab) setTab(tab.toString());
     else setTab('home');
   }, [router]);
+
+  useEffect(() => {
+    setProject(initalData);
+  }, [initalData, setProject]);
+
+  if (!project)
+    return (
+      <div>
+        <strong>Loading</strong>
+      </div>
+    );
 
   return (
     <ProjectDetailsContainer>
@@ -136,9 +154,15 @@ export const getStaticProps: GetStaticProps<ProjectDetailsProps> = async (
     };
   }
 
+  const feedbackData = appFeedbackData as FeedbackData;
+
   return {
     props: {
-      project: projectData,
+      initalData: {
+        ...projectData,
+        comments: [feedbackData, feedbackData],
+        changelogs: [changelogData, changelogData],
+      },
     },
   };
 };

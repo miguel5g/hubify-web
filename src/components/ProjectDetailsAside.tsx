@@ -12,24 +12,13 @@ import {
   FiZap,
 } from 'react-icons/fi';
 
+import { useProject } from '../hooks/useProject';
+
 import { ProjectDetailsAsideContainer } from '../styles/components/ProjectDetailsAside';
 
-interface ProjectDetailsAsideProps {
-  project: {
-    id: string;
-    title: string;
-    description: string;
-    author: string;
-    categories: string[];
-    stars: number;
-    feedbacks: number;
-    impulses: number;
-  };
-}
+export const ProjectDetailsAside: React.FC = () => {
+  const { project } = useProject();
 
-export const ProjectDetailsAside: React.FC<ProjectDetailsAsideProps> = ({
-  project,
-}) => {
   function underBuilding() {
     toast('Infelizmente isso ainda não funciona...', {
       icon: '🙁',
