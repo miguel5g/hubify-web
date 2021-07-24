@@ -15,6 +15,7 @@ export const projectData: ProjectData = {
   author_id: '1',
   title: 'Social Network',
   description: 'Um simples projeto para desenvolver abilidaes',
+  categories: ['Social', 'Em desenvolvimento', 'Open-Source'],
   stars: 113,
   feedbacks: 9,
   impulses: 38,

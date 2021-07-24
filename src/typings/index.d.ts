@@ -4,6 +4,7 @@ interface ProjectData {
   author_id: string;
   title: string;
   description: string;
+  categories: string[];
   stars: number;
   feedbacks: number;
   impulses: number;
