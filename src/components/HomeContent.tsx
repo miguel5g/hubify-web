@@ -9,7 +9,7 @@ export const HomeContent: React.FC = () => {
     <HomeContentContainer>
       <div>
         <section>
-          <h2>Imagens</h2>
+          <div />
         </section>
 
         <section>

@@ -13,14 +13,49 @@ export const HomeContentContainer = styled.div`
   & > div:first-child {
     display: flex;
     flex-direction: column;
-    gap: 32px;
 
     height: max-content;
-    padding: 16px;
 
     background: ${({ theme }) => theme.colors.primary100};
     border-radius: 8px;
     border: 1px solid ${({ theme }) => theme.colors.primary300};
+
+    section {
+      display: flex;
+      flex-direction: column;
+
+      margin: 16px;
+
+      &:first-child {
+        margin: 0;
+
+        div {
+          width: 100%;
+
+          aspect-ratio: 16/9;
+
+          background: ${({ theme }) => theme.colors.primary300};
+        }
+      }
+
+      h2 {
+        margin-bottom: 8px;
+
+        ${({ theme }) => theme.typography.titleHeavy};
+      }
+
+      p {
+        color: ${({ theme }) => theme.colors.primary800};
+      }
+
+      ul {
+        margin-top: 8px;
+
+        color: ${({ theme }) => theme.colors.primary800};
+
+        list-style: inside;
+      }
+    }
   }
 
   div.aside-wrapper {
