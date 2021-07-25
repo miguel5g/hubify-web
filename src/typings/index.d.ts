@@ -41,3 +41,9 @@ type ExtendedProjectData = ProjectData & {
   comments: FeedbackData[];
   changelogs: ChangelogData[];
 };
+
+interface UserData {
+  id: string;
+  username: string;
+  avatar_url: string | null;
+}

@@ -1,5 +1,4 @@
-import React, { createContext } from 'react';
-import { useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 interface ProjectContextType {
   project?: ExtendedProjectData;

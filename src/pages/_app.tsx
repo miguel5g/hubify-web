@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
 
 import { ProjectContextProvider } from '../contexts/ProjectContext';
+import { AuthContextProvider } from '../contexts/AuthContext';
 
 import { GlobalStyles } from '../styles/Global';
 import Light from '../styles/themes/Light';
@@ -15,11 +16,13 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     <ThemeProvider
       theme={{ ...Light, typography: Typography, elevations: Elevations }}
     >
-      <ProjectContextProvider>
-        <GlobalStyles />
-        <Component {...pageProps} />
-        <Toaster />
-      </ProjectContextProvider>
+      <AuthContextProvider>
+        <ProjectContextProvider>
+          <GlobalStyles />
+          <Component {...pageProps} />
+          <Toaster />
+        </ProjectContextProvider>
+      </AuthContextProvider>
     </ThemeProvider>
   );
 };
