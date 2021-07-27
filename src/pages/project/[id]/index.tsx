@@ -26,12 +26,14 @@ import {
 } from '../../../styles/pages/ProjectDetails';
 
 interface ProjectDetailsProps {
-  initalData: ExtendedProjectData;
+  initialData: ExtendedProjectData;
 }
 
-const ProjectDetails: React.FC<ProjectDetailsProps> = ({ initalData }) => {
+const ProjectDetails: React.FC<ProjectDetailsProps> = ({
+  initialData: initialData,
+}) => {
   const [tab, setTab] = useState<string>('home');
-  initalData.id;
+  initialData.id;
 
   const router = useRouter();
   const { project, setProject } = useProject();
@@ -45,8 +47,8 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ initalData }) => {
   }, [router]);
 
   useEffect(() => {
-    setProject(initalData);
-  }, [initalData, setProject]);
+    setProject(initialData);
+  }, [initialData, setProject]);
 
   if (!project)
     return (
@@ -80,7 +82,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ initalData }) => {
                 className={tab === 'feedbacks' ? 'active' : null}
                 href={`/project/${project.id}/feedbacks`}
               >
-                Comentáros
+                Comentários
               </Anchor>
               <Anchor
                 className={tab === 'changelog' ? 'active' : null}
@@ -158,7 +160,7 @@ export const getStaticProps: GetStaticProps<ProjectDetailsProps> = async (
 
   return {
     props: {
-      initalData: {
+      initialData: {
         ...projectData,
         comments: [feedbackData, feedbackData],
         changelogs: [changelogData, changelogData],
