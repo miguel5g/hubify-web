@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 import { toast } from 'react-hot-toast';
+import { FiGithub } from 'react-icons/fi';
 
 import { appFeedbackData, projectData } from '../utils/Samples';
 
@@ -23,6 +24,7 @@ import {
   FeedbackSection,
   HighlightSection,
   HomeContainer,
+  InviteSection,
   MainContainer,
 } from '../styles/pages/Home';
 
@@ -97,6 +99,31 @@ const Home: React.FC<HomeProps> = ({ highlights }) => {
             </p>
           </div>
         </DecideSection>
+
+        <InviteSection>
+          <div>
+            <div>
+              <strong>Você também pode ajudar a desenvolver o Hubify.</strong>
+              <p>
+                O Hubify é um projeto de open-source, então você pode nos ajudar
+                a melhorar a plataforma, seja com ideias, correções e até novas
+                features!
+              </p>
+            </div>
+
+            <div>
+              <a
+                href="https://github.com/miguel5g/hubify-web/"
+                target="__blank"
+                rel="noopener noreferrer"
+                arial-label="Hubify Github"
+              >
+                <FiGithub />
+                Repositório Github
+              </a>
+            </div>
+          </div>
+        </InviteSection>
 
         <FeedbackSection>
           <h2>Feedbacks</h2>
