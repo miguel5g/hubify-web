@@ -53,9 +53,8 @@ export const FeedbacksList = styled.ul`
     padding: 16px;
 
     background: ${({ theme }) => theme.colors.primary100};
-    /* border: 1px solid ${({ theme }) => theme.colors.primary400}; */
+    border: 1px solid ${({ theme }) => theme.colors.primary300};
     border-radius: 4px;
-    ${({ theme }) => theme.elevations.elevation4}
 
     header {
       display: flex;
