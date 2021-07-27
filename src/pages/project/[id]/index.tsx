@@ -24,6 +24,7 @@ import {
   MainContainer,
   ProjectDetailsContainer,
 } from '../../../styles/pages/ProjectDetails';
+import { useAuth } from '../../../hooks/useAuth';
 
 interface ProjectDetailsProps {
   initialData: ExtendedProjectData;
@@ -33,10 +34,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
   initialData: initialData,
 }) => {
   const [tab, setTab] = useState<string>('home');
-  initialData.id;
 
   const router = useRouter();
   const { project, setProject } = useProject();
+  const { isAuth, user } = useAuth();
 
   useEffect(() => {
     const { tab } = router.query;
@@ -90,24 +91,29 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
               >
                 Alterações
               </Anchor>
-              <Anchor
-                className={tab === 'issues' ? 'active' : null}
-                href={`/project/${project.id}/issues`}
-              >
-                Problemas
-              </Anchor>
-              <Anchor
-                className={tab === 'suggestions' ? 'active' : null}
-                href={`/project/${project.id}/suggestions`}
-              >
-                Sugestões
-              </Anchor>
-              <Anchor
-                className={tab === 'settings' ? 'active' : null}
-                href={`/project/${project.id}/settings`}
-              >
-                Configurações
-              </Anchor>
+
+              {isAuth && user.id === project.author_id && (
+                <>
+                  <Anchor
+                    className={tab === 'issues' ? 'active' : null}
+                    href={`/project/${project.id}/issues`}
+                  >
+                    Problemas
+                  </Anchor>
+                  <Anchor
+                    className={tab === 'suggestions' ? 'active' : null}
+                    href={`/project/${project.id}/suggestions`}
+                  >
+                    Sugestões
+                  </Anchor>
+                  <Anchor
+                    className={tab === 'settings' ? 'active' : null}
+                    href={`/project/${project.id}/settings`}
+                  >
+                    Configurações
+                  </Anchor>
+                </>
+              )}
             </nav>
           </div>
         </HeaderSection>
