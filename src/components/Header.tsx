@@ -46,9 +46,9 @@ export const Header: React.FC = () => {
           <Link href="/projects" passHref>
             <NavLink href="/projects">Projetos</NavLink>
           </Link>
-          <Link href="/sponsor" passHref>
+          {/* <Link href="/sponsor" passHref>
             <NavLink href="/sponsor">Apoiar</NavLink>
-          </Link>
+          </Link> */}
         </nav>
 
         <AuthActions className={isOpen ? 'opened' : ''}>
