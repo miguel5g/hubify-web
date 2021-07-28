@@ -35,4 +35,13 @@ export const ButtonContainer = styled.button<ButtonProps>`
 
     color: ${({ theme }) => theme.colors.primary900};
   }
+
+  &:disabled {
+    background: none;
+    border-color: ${({ theme }) => theme.colors.primary400};
+
+    color: ${({ theme }) => theme.colors.primary600};
+
+    cursor: not-allowed;
+  }
 `;
