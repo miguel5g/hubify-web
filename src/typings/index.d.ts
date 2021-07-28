@@ -47,3 +47,8 @@ interface UserData {
   username: string;
   avatar_url: string | null;
 }
+
+type Extends<T, P> = T &
+  {
+    [K in keyof P]: P[k];
+  };
