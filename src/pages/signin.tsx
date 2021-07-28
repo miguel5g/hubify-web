@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
-import { FiLock, FiMail } from 'react-icons/fi';
+import { FiLock, FiUser } from 'react-icons/fi';
+
+import { api } from '../services/Api';
+import { useAuth } from '../hooks/useAuth';
 
 import { Anchor } from '../components/Anchor';
 import { Button } from '../components/Button';
@@ -10,13 +14,51 @@ import { Button } from '../components/Button';
 import { AuthContainer } from '../styles/pages/Auth';
 
 const SignIn: React.FC = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setLoading] = useState(false);
+
   const router = useRouter();
+  const { refresh } = useAuth();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    if (isLoading) return;
+
     e.preventDefault();
-    toast('Infelizmente isso ainda não funciona...', {
-      icon: '🙁',
+
+    setLoading(true);
+
+    const signInPromise = new Promise<void>((resolve, reject) => {
+      api
+        .post('/session', {
+          username,
+          password,
+        })
+        .then(() => {
+          setLoading(false);
+          resolve();
+        })
+        .catch(({ response, ...err }: AxiosError) => {
+          setLoading(false);
+
+          if (response) {
+            reject(response.data.error || response.data.message);
+          }
+
+          reject('Erro inesperado...');
+        });
     });
+
+    toast
+      .promise(signInPromise, {
+        loading: 'Aguarde...',
+        success: 'Bem-Vindo!',
+        error: (err: string) => err,
+      })
+      .then(async () => {
+        await refresh();
+        router.push('/');
+      });
   }
 
   return (
@@ -29,11 +71,16 @@ const SignIn: React.FC = () => {
         <h1>Acessar conta</h1>
 
         <div>
-          <label htmlFor="email">
-            <FiMail />
-            E-mail
+          <label htmlFor="username">
+            <FiUser />
+            Usuário
           </label>
-          <input type="email" name="email" id="email" />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
 
         <div>
@@ -41,12 +88,17 @@ const SignIn: React.FC = () => {
             <FiLock />
             Senha
           </label>
-          <input type="password" name="password" id="password" />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
 
         <div className="button-group">
           <Button onClick={() => router.back()}>Voltar</Button>
-          <Button isPrimary type="submit">
+          <Button isPrimary type="submit" disabled={isLoading}>
             Acessar
           </Button>
         </div>
