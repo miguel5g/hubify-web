@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useList } from 'react-use';
 import { FiSearch } from 'react-icons/fi';
 
-import { projectData } from '../utils/Samples';
+import { api } from '../services/Api';
 
 import { Button } from '../components/Button';
 import { Footer } from '../components/Footer';
@@ -20,23 +20,66 @@ import {
 } from '../styles/pages/Projects';
 
 interface ProjectsProps {
-  projects: ProjectData[];
+  projects: {
+    page: number;
+    total_pages: number;
+    total_projects: number;
+    data: ProjectData[];
+  };
 }
 
-const Projects: React.FC<ProjectsProps> = (props) => {
+const Projects: React.FC<ProjectsProps> = ({ projects }) => {
+  const [page, setPage] = useState(projects.page);
+  const [totalPages, setTotalPages] = useState(projects.total_pages);
   const [search, setSearch] = useState('');
-  const [projects, projectsMethods] = useList(props.projects);
+  const [data, dataMethods] = useList(projects.data);
+  const [lastSearch, setLastSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   let searchTimeout: NodeJS.Timeout;
 
+  if (process.browser) console.log(window.location);
+
   useEffect(() => {
-    console.log(search);
-  }, [search]);
+    if (search === lastSearch) return;
+    else setLastSearch(search);
+
+    setIsLoading(true);
+
+    dataMethods.set([]);
+
+    api
+      .get('/projects', { params: { search } })
+      .then(({ data }) => {
+        dataMethods.set(data.projects);
+        setPage(data.page);
+        setTotalPages(data.total_pages);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error('Ocorreu algum erro ao tentar pesquisar.');
+        setIsLoading(false);
+      });
+  }, [dataMethods, lastSearch, search]);
 
   function handleLoadMore() {
-    toast('Infelizmente isso ainda não funciona...', {
-      icon: '🙁',
-    });
+    setIsLoading(true);
+
+    api
+      .get('/projects', {
+        params: { page: page + 1, search },
+      })
+      .then(({ data }) => {
+        dataMethods.push(...data.projects);
+        setPage(data.page);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error('Ocorreu algum erro ao tentar carregar mais resultados.');
+        setIsLoading(false);
+      });
   }
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -50,7 +93,7 @@ const Projects: React.FC<ProjectsProps> = (props) => {
   return (
     <ProjectsContainer>
       <Head>
-        <title>Eplorar projetos - Hubify</title>
+        <title>Explorar projetos - Hubify</title>
       </Head>
 
       <MainContainer>
@@ -71,14 +114,16 @@ const Projects: React.FC<ProjectsProps> = (props) => {
 
         <ResultSection>
           <ul>
-            {projects.map((data, i) => (
+            {data.map((data, i) => (
               <li key={i.toString()}>
                 <ProjectCard project={data} />
               </li>
             ))}
           </ul>
 
-          <Button onClick={handleLoadMore}>Carregar mais...</Button>
+          {page < totalPages && (
+            <Button onClick={handleLoadMore}>Carregar mais...</Button>
+          )}
         </ResultSection>
       </MainContainer>
 
@@ -88,11 +133,11 @@ const Projects: React.FC<ProjectsProps> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps<ProjectsProps> = async () => {
-  const projects = Array.from({ length: 18 }, () => projectData);
+  const { data } = await api.get('/projects');
 
   return {
     props: {
-      projects,
+      projects: { ...data, data: data.projects },
     },
   };
 };
