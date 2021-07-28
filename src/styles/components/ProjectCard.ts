@@ -4,6 +4,7 @@ export const ProjectCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex: 1;
 
   padding: 16px;
 
@@ -52,5 +53,6 @@ export const ProjectCardContainer = styled.div`
 
   a {
     width: 100%;
+    margin-top: auto;
   }
 `;
