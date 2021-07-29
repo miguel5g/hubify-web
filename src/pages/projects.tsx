@@ -38,8 +38,6 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   let searchTimeout: NodeJS.Timeout;
 
-  if (process.browser) console.log(window.location);
-
   useEffect(() => {
     if (search === lastSearch) return;
     else setLastSearch(search);
