@@ -1,99 +1,190 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEvent } from 'react-use';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiUser } from 'react-icons/fi';
+import { motion, Variants } from 'framer-motion';
 
 import logoSVG from '../assets/svg/logo.svg';
 
 import { useAuth } from '../hooks/useAuth';
 
+import { Anchor } from './Anchor';
 import { LinkButton } from './LinkButton';
 
 import {
-  AuthActions,
+  ContentWrapper,
   HeaderContainer,
   HeaderWrapper,
-  MobileActions,
-  NavLink,
-  UserInfo,
 } from '../styles/components/Header';
 
 export const Header: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const [isMobile, setMobile] = useState(true);
 
+  const contentRef = useRef<HTMLDivElement>();
   const { isAuth, user } = useAuth();
-
-  function onResize() {
-    if (window) {
-      if (window.innerWidth > 840 && isOpen) setIsOpen(false);
-    }
-  }
 
   useEvent('resize', onResize);
 
+  useEffect(() => {
+    if (window && window.innerHeight >= 840) setMobile(false);
+    else if (window && window.innerHeight < 840) setMobile(true);
+  }, []);
+
+  function onResize() {
+    if (window) {
+      if (window.innerWidth >= 840) {
+        if (isOpen) setOpen(false);
+        setMobile(false);
+      } else if (window.innerWidth < 840) {
+        setMobile(true);
+      }
+    }
+  }
+
+  function handleContentClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    if (e.target === contentRef.current) setOpen(false);
+  }
+
+  const contentWrapperVariants: Variants = {
+    opened: {
+      opacity: 1,
+      pointerEvents: 'auto',
+    },
+    closed: {
+      opacity: 0,
+      pointerEvents: 'none',
+    },
+  };
+
+  const contentVariants: Variants = {
+    opened: {
+      opacity: 1,
+      width: 'max-content',
+    },
+    closed: {
+      opacity: 0,
+      width: 0,
+    },
+  };
+
   return (
     <HeaderContainer>
-      <HeaderWrapper className={isOpen ? 'opened' : ''}>
-        <Image
-          src={logoSVG}
-          alt="Logo"
-          width={150}
-          height={25}
-          layout="fixed"
-          priority
-        />
+      <HeaderWrapper>
+        <div className="logo-wrapper">
+          <Image src={logoSVG} alt="Hubify" layout="fill" priority />
+        </div>
 
-        <nav>
-          <Link href="/" passHref>
-            <NavLink href="/">Home</NavLink>
-          </Link>
-          <Link href="/projects" passHref>
-            <NavLink href="/projects">Projetos</NavLink>
-          </Link>
-          {/* <Link href="/sponsor" passHref>
-            <NavLink href="/sponsor">Apoiar</NavLink>
-          </Link> */}
-        </nav>
+        <button onClick={() => setOpen(true)}>
+          <FiMenu />
+        </button>
 
-        {isAuth ? (
-          <UserInfo className={isOpen ? 'opened' : ''}>
-            {user.avatar_url && (
-              <Image
-                src={user.avatar_url}
-                height={33}
-                width={33}
-                objectFit="contain"
-                alt={`${user.username}'s profile`}
-                loader={({ src }) => src}
-              />
-            )}
-            <strong>{user.username}</strong>
-          </UserInfo>
-        ) : (
-          <AuthActions className={isOpen ? 'opened' : ''}>
-            <Link href="/signup" passHref>
-              <LinkButton>Registrar</LinkButton>
-            </Link>
-            <Link href="/signin" passHref>
-              <LinkButton isPrimary>Entrar</LinkButton>
-            </Link>
-          </AuthActions>
-        )}
-
-        <MobileActions className={isOpen ? 'opened' : ''}>
-          <button
-            onClick={() => {
-              if (window && window.scrollY === 0) window.scrollTo({ top: 1 });
-              setIsOpen(true);
-            }}
+        {isMobile ? (
+          <ContentWrapper
+            ref={contentRef}
+            onClick={handleContentClick}
+            variants={contentWrapperVariants}
+            animate={isOpen ? 'opened' : 'closed'}
           >
-            <FiMenu />
-          </button>
-          <button onClick={() => setIsOpen(false)}>
-            <FiX />
-          </button>
-        </MobileActions>
+            <motion.div
+              variants={contentVariants}
+              animate={isOpen ? 'opened' : 'closed'}
+            >
+              <div className="logo-wrapper">
+                <Image src={logoSVG} alt="Hubify" layout="fill" priority />
+              </div>
+
+              <nav>
+                <Anchor href="/">Home</Anchor>
+                <Anchor href="/projects">Projetos</Anchor>
+
+                {isAuth && isMobile && (
+                  <>
+                    <div className="separator" />
+                    <Anchor href="/projects">Perfil</Anchor>
+                    <Anchor href="/projects">Meus projetos</Anchor>
+                    <Anchor href="/signout">Sair</Anchor>
+                  </>
+                )}
+              </nav>
+
+              {isAuth ? (
+                <div className="user-info">
+                  {user.avatar_url ? (
+                    <Image
+                      src={user.avatar_url}
+                      height={33}
+                      width={33}
+                      objectFit="contain"
+                      alt={`${user.username}'s profile`}
+                      loader={({ src }) => src}
+                    />
+                  ) : (
+                    <div className="default-user">
+                      <FiUser />
+                    </div>
+                  )}
+                  <span>{user.username}</span>
+                </div>
+              ) : (
+                <div className="auth">
+                  <Link href="/signup" passHref>
+                    <LinkButton>Registrar</LinkButton>
+                  </Link>
+                  <Link href="/signin" passHref>
+                    <LinkButton isPrimary>Entrar</LinkButton>
+                  </Link>
+                </div>
+              )}
+            </motion.div>
+          </ContentWrapper>
+        ) : (
+          <div>
+            <nav>
+              <Anchor href="/">Home</Anchor>
+              <Anchor href="/projects">Projetos</Anchor>
+
+              {isAuth && isMobile && (
+                <>
+                  <div className="separator" />
+                  <Anchor href="/projects">Perfil</Anchor>
+                  <Anchor href="/projects">Meus projetos</Anchor>
+                  <Anchor href="/signout">Sair</Anchor>
+                </>
+              )}
+            </nav>
+
+            {isAuth ? (
+              <div className="user-info">
+                {user.avatar_url ? (
+                  <Image
+                    src={user.avatar_url}
+                    height={33}
+                    width={33}
+                    objectFit="contain"
+                    alt={`${user.username}'s profile`}
+                    loader={({ src }) => src}
+                  />
+                ) : (
+                  <div className="default-user">
+                    <FiUser />
+                  </div>
+                )}
+                <span>{user.username}</span>
+              </div>
+            ) : (
+              <div className="auth">
+                <Link href="/signup" passHref>
+                  <LinkButton>Registrar</LinkButton>
+                </Link>
+                <Link href="/signin" passHref>
+                  <LinkButton isPrimary>Entrar</LinkButton>
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
       </HeaderWrapper>
     </HeaderContainer>
   );
