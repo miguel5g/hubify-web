@@ -6,6 +6,8 @@ import { FiMenu, FiX } from 'react-icons/fi';
 
 import logoSVG from '../assets/svg/logo.svg';
 
+import { useAuth } from '../hooks/useAuth';
+
 import { LinkButton } from './LinkButton';
 
 import {
@@ -14,10 +16,13 @@ import {
   HeaderWrapper,
   MobileActions,
   NavLink,
+  UserInfo,
 } from '../styles/components/Header';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { isAuth, user } = useAuth();
 
   function onResize() {
     if (window) {
@@ -51,14 +56,30 @@ export const Header: React.FC = () => {
           </Link> */}
         </nav>
 
-        <AuthActions className={isOpen ? 'opened' : ''}>
-          <Link href="/signup" passHref>
-            <LinkButton>Registrar</LinkButton>
-          </Link>
-          <Link href="/signin" passHref>
-            <LinkButton isPrimary>Entrar</LinkButton>
-          </Link>
-        </AuthActions>
+        {isAuth ? (
+          <UserInfo className={isOpen ? 'opened' : ''}>
+            {user.avatar_url && (
+              <Image
+                src={user.avatar_url}
+                height={33}
+                width={33}
+                objectFit="contain"
+                alt={`${user.username}'s profile`}
+                loader={({ src }) => src}
+              />
+            )}
+            <strong>{user.username}</strong>
+          </UserInfo>
+        ) : (
+          <AuthActions className={isOpen ? 'opened' : ''}>
+            <Link href="/signup" passHref>
+              <LinkButton>Registrar</LinkButton>
+            </Link>
+            <Link href="/signin" passHref>
+              <LinkButton isPrimary>Entrar</LinkButton>
+            </Link>
+          </AuthActions>
+        )}
 
         <MobileActions className={isOpen ? 'opened' : ''}>
           <button

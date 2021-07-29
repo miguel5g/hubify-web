@@ -126,3 +126,41 @@ export const AuthActions = styled.div`
     margin-left: auto;
   }
 `;
+
+export const UserInfo = styled.div`
+  display: none;
+  align-items: center;
+
+  padding: 4px;
+  padding-right: 16px;
+
+  border: 1px solid ${({ theme }) => theme.colors.primary300};
+  border-radius: 32px;
+
+  img {
+    border-radius: 50%;
+  }
+
+  strong {
+    margin-left: 8px;
+    ${({ theme }) => theme.typography.bodyHeavy};
+  }
+
+  &.opened {
+    display: flex;
+  }
+
+  @media (min-width: 840px) {
+    display: flex;
+    flex-direction: row-reverse;
+
+    margin-left: auto;
+    padding-right: 4px;
+    padding-left: 12px;
+
+    strong {
+      margin-left: 0;
+      margin-right: 8px;
+    }
+  }
+`;
