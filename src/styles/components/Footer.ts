@@ -5,6 +5,7 @@ export const FooterContainer = styled.footer`
   align-items: center;
   justify-content: center;
 
+  margin-top: auto;
   padding: 16px 32px;
 
   background: ${({ theme }) => theme.colors.primary100};
