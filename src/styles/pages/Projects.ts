@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  min-height: 100vh;
 `;
 
 export const MainContainer = styled.main`
@@ -87,5 +89,36 @@ export const ResultSection = styled(Section)`
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 16px;
     }
+  }
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+
+  strong {
+    margin-top: 8px;
+
+    ${({ theme }) => theme.typography.titleHeavy}
+  }
+
+  p {
+    ${({ theme }) => theme.typography.bodyLight}
+  }
+
+  .loading-container {
+    position: relative;
+
+    min-width: 147px;
+    min-height: 192px;
+  }
+
+  .not-found-container {
+    position: relative;
+
+    min-width: 276px;
+    min-height: 192px;
   }
 `;

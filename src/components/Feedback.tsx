@@ -21,6 +21,7 @@ export const Feedback: React.FC<FeedbackProps> = ({ feedback }) => {
         height={64}
         alt="User photo"
         loader={({ src }) => src}
+        unoptimized
       />
       <span>{feedback.author}</span>
     </FeedbackContainer>

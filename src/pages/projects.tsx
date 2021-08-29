@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { GetStaticProps } from 'next';
 import { toast } from 'react-hot-toast';
 import { useList } from 'react-use';
@@ -12,7 +13,11 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { ProjectCard } from '../components/ProjectCard';
 
+import searchNotFoundSVG from '../assets/svg/search-not-found.svg';
+import loadingSVG from '../assets/svg/loading.svg';
+
 import {
+  Info,
   MainContainer,
   ProjectsContainer,
   ResultSection,
@@ -34,7 +39,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [search, setSearch] = useState('');
   const [data, dataMethods] = useList(projects.data);
   const [lastSearch, setLastSearch] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   let searchTimeout: NodeJS.Timeout;
 
@@ -111,16 +116,45 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         </SearchSection>
 
         <ResultSection>
-          <ul>
-            {data.map((data, i) => (
-              <li key={i.toString()}>
-                <ProjectCard project={data} />
-              </li>
-            ))}
-          </ul>
+          {isLoading ? (
+            <Info>
+              <div className="loading-container">
+                <Image src={loadingSVG} alt="Carregando dados" layout="fill" />
+              </div>
+              <strong>Carregando pesquisa...</strong>
+              <p>Fato curioso: Eu não sei o que estou fazendo!</p>
+            </Info>
+          ) : (
+            <>
+              {data.length === 0 ? (
+                <Info>
+                  <div className="not-found-container">
+                    <Image
+                      src={searchNotFoundSVG}
+                      alt="Carregando dados"
+                      layout="fill"
+                    />
+                  </div>
 
-          {page < totalPages && (
-            <Button onClick={handleLoadMore}>Carregar mais...</Button>
+                  <strong>Nenhum resultado foi encontrado. =/</strong>
+                  <p>Tente pesquisar por outro termo</p>
+                </Info>
+              ) : (
+                <>
+                  <ul>
+                    {data.map((data, i) => (
+                      <li key={i.toString()}>
+                        <ProjectCard project={data} />
+                      </li>
+                    ))}
+                  </ul>
+
+                  {page < totalPages && (
+                    <Button onClick={handleLoadMore}>Carregar mais...</Button>
+                  )}
+                </>
+              )}
+            </>
           )}
         </ResultSection>
       </MainContainer>
